@@ -6,13 +6,10 @@ conda env create -f environment.yml || conda env update -f environment.yml
 # Activate the environment
 source activate youtube_assistant
 
-# Install packages using pip
-python3 -m pip install openai
-pip3 install python-dotenv
-pip3 install langchain
-pip3 install --upgrade langchain
-pip3 install docarray
-pip3 install tiktoken
+# ADD LIBRARIES AND DEPEDENCIES WHICH ARE NOT IN THE ENVIRONMENT.YML FILE
+# FOLLOWE THE BLOW DESCRIPTION TO INSTALL THE LIBRARIES
+# python3 -m pip install openai
+
 
 
 # ------------------------ setup.sh --------------------------

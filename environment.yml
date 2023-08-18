@@ -1,16 +1,30 @@
 name: youtube_assistant
+
 channels:
-  - defaults
+  - apple
+  - conda-forge
 dependencies:
-  - python=3.11
-  - numpy
-  - pandas
-  - tensorflow
-  - keras
-  - matplotlib
-  - scikit-learn
-  - jupyter
-  - black
+    - python=3.11.4
+    - jupyter
+    - numpy
+    - scikit-learn
+    - scipy
+    - pandas
+    - matplotlib
+    - seaborn
+    - black
+    - keras
+    - pip:
+        - tensorflow-macos
+        - tensorflow-metal
+        - openai
+        - python-dotenv
+        - langchain  
+        - docarray
+        - tiktoken
+        - chromadb
+        - streamlit
+
 
 
 # ***YOU DONT NEED RUN .YML FILE IN TERMINAL, IF YOU RUN BASH SCRIPT FILE (setup.sh)***
