@@ -1,30 +1,47 @@
-import numpy as np
-import pandas as pd
-import matplotlib.pyplot as plt
-
-
-# Load API key from .env file and set it as the API key
+# Import the necessary packages
 import os
+from langchain.embeddings import OpenAIEmbeddings
+from langchain.document_loaders import YoutubeLoader
+from langchain.text_splitter import RecursiveCharacterTextSplitter
+from langchain.vectorstores import Chroma
 
-# from dotenv import load_dotenv, find_dotenv
 
-# dotenv_path = find_dotenv()
-# load_dotenv(dotenv_path)
+# Load  OpenAI API key from .env file and set it as the API key
 openai_key = os.getenv("OPENAI_KEY")
-# openai.api_key = openai_key
 os.environ["OPENAI_API_KEY"] = openai_key
 
-
-
-form langchain import OpenAIEmbeddings
+video_url = "https://www.youtube.com/watch?v=jGwO_UgTS7I"
+persist_directory = '../../data/processed'
 embeddings = OpenAIEmbeddings()
-embed = embeddings.embed_query("Hi my name is John")
-print(len(embed))
-print(embed[0:5])
 
-import langchain as lc
 
-import tensorflow as tf
-import keras as k
-import openai as oai
-import langchain as lc
+loader = YoutubeLoader.from_youtube_url(video_url)
+transcript = loader.load()
+text_splitter = RecursiveCharacterTextSplitter(chunk_size=1500, chunk_overlap=150)
+docs = text_splitter.split_documents(transcript)
+#docs[0].page_content
+
+vectordb = Chroma.from_documents(documents=docs,
+                                 embedding=embeddings,
+                                 persist_directory=persist_directory)
+
+def youtube_url_db(video_url):
+    # Load the video from the URL
+    loader = YoutubeLoader.from_youtube_url(video_url)
+    transcript = loader.load())
+
+    # Split the video into sentences
+    splitter = RecursiveCharacterTextSplitter()
+    sentences = splitter.split_text
+
+    # Embed the sentences
+    sentence_embeddings = embeddings.embed(sentences)
+
+    # Store the sentences and their embeddings in a vector store
+    vector_store = chroma.VectorStore()
+    vector_store.store(sentences, sentence_embeddings)
+
+    # Get the most similar sentences to the query
+    query = "What is the most important thing in life?"
+    results = vector_store.most_similar(query, topn=5)
+    return results
