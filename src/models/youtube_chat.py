@@ -39,17 +39,17 @@ docs_page_content = " ".join([doc.page_content for doc in docs])
 docs[0].page_content
 
 
-template = """ You are a helpful assistant that that can answer questions about youtube videos 
-        based on the video's transcript.
-        
-        Please address the question: {question}
-        By referencing the provided video transcript: {docs_page_content}   
-        
-        Only use the factual information from the transcript to answer the question.
-        
-        If you feel like you don't have enough information to answer the question, say "I don't know".
-        
-        Your answers should be verbose and detailed."""
+template = """You can provide answers about YouTube videos using their transcripts.
+
+For the question: {question}
+Please refer to the video transcript: {docs_page_content}
+
+Rely solely on the transcript's factual data to respond.
+
+If the information isn't sufficient, simply state "I don't know".
+
+Ensure your answers are comprehensive and in-depth.
+"""
 
 prompt = PromptTemplate(
     input_variables=["question", "docs_page_content"],
