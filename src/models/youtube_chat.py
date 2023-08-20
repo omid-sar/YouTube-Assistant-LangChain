@@ -4,6 +4,8 @@ from langchain.embeddings import OpenAIEmbeddings
 from langchain.document_loaders import YoutubeLoader
 from langchain.text_splitter import RecursiveCharacterTextSplitter
 from langchain.vectorstores import Chroma
+from langchain.llms import OpenAI
+from langchain.prompts import PromptTemplate
 
 
 # Load  OpenAI API key from .env file and set it as the API key
@@ -25,23 +27,32 @@ vectordb = Chroma.from_documents(documents=docs,
                                  embedding=embeddings,
                                  persist_directory=persist_directory)
 
+# Create a database of the youtube video url
 def youtube_url_db(video_url):
-    # Load the video from the URL
     loader = YoutubeLoader.from_youtube_url(video_url)
-    transcript = loader.load())
+    transcript = loader.load()
+    text_splitter = RecursiveCharacterTextSplitter(chunk_size=1500, chunk_overlap=150)
+    docs = text_splitter.split_documents(transcript)
+    vectordb = Chroma.from_documents(documents=docs,
+                                 embedding=embeddings,
+                                 persist_directory=persist_directory)
+    return vectordb
 
-    # Split the video into sentences
-    splitter = RecursiveCharacterTextSplitter()
-    sentences = splitter.split_text
 
-    # Embed the sentences
-    sentence_embeddings = embeddings.embed(sentences)
+question = "What is the best way to learn a new language?"
 
-    # Store the sentences and their embeddings in a vector store
-    vector_store = chroma.VectorStore()
-    vector_store.store(sentences, sentence_embeddings)
+docs = vectordb.similarity_search(query=question, k=3)
+docs_page_content = " ".join([doc.page_content for doc in docs])
 
-    # Get the most similar sentences to the query
-    query = "What is the most important thing in life?"
-    results = vector_store.most_similar(query, topn=5)
-    return results
+llm = OpenAI(temperature=0)
+template = """
+You are a knowledgeable assistant proficient in answering queries related to YouTube \n 
+videos by analyzing their transcripts.
+
+Please address the query: {question}
+By referencing the provided video transcript: {docs}
+
+If the answer isn't apparent in the transcript, kindly mention that you're unsure. \n
+Please refrain from speculating. Conclude all responses with "Thanks for asking!""""
+prompt = PromptTemplate(input_variables=["docs_page_content", question], template=template)
+
