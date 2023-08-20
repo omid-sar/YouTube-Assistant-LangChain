@@ -38,15 +38,6 @@ docs = vectordb.similarity_search(query=question, k=3)
 docs_page_content = " ".join([doc.page_content for doc in docs])
 docs[0].page_content
 
-template = """
-You are a knowledgeable assistant proficient in answering queries related
-to YouTube videos by analyzing their transcripts.
-
-Please address the question: {question}
-By referencing the provided video transcript: {docs_page_content}
-
-If the answer isn't apparent in the transcript, kindly mention that you're unsure.
-"""
 
 template = """ You are a helpful assistant that that can answer questions about youtube videos 
         based on the video's transcript.
@@ -59,6 +50,7 @@ template = """ You are a helpful assistant that that can answer questions about 
         If you feel like you don't have enough information to answer the question, say "I don't know".
         
         Your answers should be verbose and detailed."""
+
 prompt = PromptTemplate(
     input_variables=["question", "docs_page_content"],
     template=template,
