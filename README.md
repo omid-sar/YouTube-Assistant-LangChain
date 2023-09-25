@@ -27,8 +27,8 @@ The application uses the `langchain` library to handle various tasks such as loa
 
 1. Clone the repository:
    ```sh
-   git clone <repository-url>
-   cd <repository-directory>
+   git clone https://github.com/omid-sar/YouTube-Assistant-LangChain.git
+   cd YouTube-Assistant-LangChain
    ```
 
 2. Install the required libraries:
