@@ -52,13 +52,10 @@ The application uses the `langchain` library to handle various tasks such as loa
 
 3. The app will process the video transcript, perform a similarity search, and use OpenAI to generate a response, which will be displayed on the screen.
 
-## Contributing
-
-Contributions are welcome! Please read the [contributing guidelines](CONTRIBUTING.md) to get started.
 
 ## License
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+This project is licensed under the MIT License - see the [https://github.com/git/git-scm.com/blob/main/MIT-LICENSE.txt](LICENSE) file for details.
 ```
 
 Please replace `<repository-url>` and `<repository-directory>` with the actual URL of your repository and the name of the directory. Also, ensure that contributing guidelines are available at `CONTRIBUTING.md` and the license at `LICENSE` if you are linking to them in the README.
