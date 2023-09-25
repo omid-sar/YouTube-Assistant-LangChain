@@ -8,7 +8,7 @@ from langchain.llms import OpenAI
 from langchain.prompts import PromptTemplate
 from langchain.chains import LLMChain
 import textwrap
-
+!pip install pytube
 
 # Load  OpenAI API key from .env file and set it as the API key
 openai_key = os.getenv("OPENAI_KEY")
@@ -20,7 +20,10 @@ persist_directory = "../../data/processed"
 embeddings = OpenAIEmbeddings()
 
 
-loader = YoutubeLoader.from_youtube_url(video_url)
+loader = YoutubeLoader.from_youtube_url(video_url, add_video_info=True )
+info = loader._get_video_info()
+staticmethod.
+info["author"]
 transcript = loader.load()
 text_splitter = RecursiveCharacterTextSplitter(chunk_size=1500, chunk_overlap=150)
 docs = text_splitter.split_documents(transcript)
