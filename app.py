@@ -13,7 +13,7 @@ from apikey import apikey
 
 # Load  OpenAI API key and define directory to store the data
 os.environ["OPENAI_API_KEY"] = apikey
-persist_directory = "../../data/processed"
+# persist_directory = "../../data/processed"
 
 # Load the OpenAI Embeddings, LLM , PromptTemplate and LLMChain
 embeddings = OpenAIEmbeddings()
@@ -59,7 +59,7 @@ if video_url and question:
     # docs[0].page_content
     # Create the vector database which will be used to search for similar sentences
     vectordb = Chroma.from_documents(
-        documents=docs, embedding=embeddings, persist_directory=persist_directory
+        documents=docs, embedding=embeddings, persist_directory="./chroma_db"
     )
 
     # Search for the most similar sentences to the question and concatenate top 3 vectors
