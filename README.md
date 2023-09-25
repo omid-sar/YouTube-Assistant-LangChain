@@ -58,4 +58,3 @@ The application uses the `langchain` library to handle various tasks such as loa
 This project is licensed under the MIT License - see the [LICENSE](https://github.com/git/git-scm.com/blob/main/MIT-LICENSE.txt) file for details.
 ```
 
-Please replace `<repository-url>` and `<repository-directory>` with the actual URL of your repository and the name of the directory. Also, ensure that contributing guidelines are available at `CONTRIBUTING.md` and the license at `LICENSE` if you are linking to them in the README.
