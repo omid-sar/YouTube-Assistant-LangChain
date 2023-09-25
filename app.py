@@ -11,14 +11,15 @@ import textwrap
 
 
 # Load  OpenAI API key from .env file and set it as the API key
-openai_key = os.getenv("OPENAI_KEY")
-os.environ["OPENAI_API_KEY"] = openai_key
+os.environ["OPENAI_API_KEY"] = os.getenv("OPENAI_KEY")
 
 # *** YOUR VIDEO URL ***
 video_url = "https://www.youtube.com/watch?v=jGwO_UgTS7I"
 persist_directory = "../../data/processed"
 embeddings = OpenAIEmbeddings()
 
+
+llm = OpenAI(temperature=0)
 
 loader = YoutubeLoader.from_youtube_url(video_url)
 transcript = loader.load()
