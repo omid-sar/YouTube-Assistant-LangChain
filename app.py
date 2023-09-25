@@ -42,7 +42,8 @@ st.title("YouTube Video Transcript Analyzer")
 # *** YOUR VIDEO URL and QUESTION ***
 video_url = st.text_input("Enter the YouTube video URL:")
 question = st.text_input("Enter your question about the video:")
-
+# add submit button
+# submit = st.button("Submit")
 #
 if video_url and question:
     # load the video transcript
@@ -67,8 +68,4 @@ if video_url and question:
     # docs[0].page_content
     # send the question and the top 3 sentences to the LLMChain and print the response
     response = chain.run(question=question, docs_page_content=docs_page_content)
-    print(textwrap.fill(response, width=85))
-
-
-"https://www.youtube.com/watch?v=NYSWn1ipbgg"
-"what did course instructor say about Python LangChain library?"
+    st.write(textwrap.fill(response, width=85))
