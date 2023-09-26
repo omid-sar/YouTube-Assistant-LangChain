@@ -59,6 +59,3 @@ You can test this application directly on Hugging Face Spaces by visiting [YouTu
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE](https://github.com/git/git-scm.com/blob/main/MIT-LICENSE.txt) file for details.
-```
-
-This modification provides users with an alternative way to test the application and directs them to the Hugging Face Spaces link for the YouTube Transcript Analyzer.
