@@ -9,6 +9,10 @@ The goal of this application is to analyze YouTube video transcripts. It takes a
 
 The application uses the `langchain` library to handle various tasks such as loading YouTube video transcripts, converting transcripts to embeddings, performing similarity searches, and integrating with OpenAI's language models. The application is built using Streamlit, which provides an interactive user interface for inputting the video URL and the question.
 
+## Testing on Hugging Face Spaces
+
+You can test this application directly on Hugging Face Spaces by visiting [YouTube Transcript Analyzer](https://huggingface.co/spaces/Omid-sar/YouTube_Transcript_Analyzer). Follow the usage instructions outlined below to analyze YouTube video transcripts and generate responses based on your questions.
+
 ## Features
 
 - **YouTube Video Transcript Loading**: Load and process YouTube video transcripts using `YoutubeLoader` from the `langchain` library.
@@ -52,9 +56,9 @@ The application uses the `langchain` library to handle various tasks such as loa
 
 3. The app will process the video transcript, perform a similarity search, and use OpenAI to generate a response, which will be displayed on the screen.
 
-
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE](https://github.com/git/git-scm.com/blob/main/MIT-LICENSE.txt) file for details.
 ```
 
+This modification provides users with an alternative way to test the application and directs them to the Hugging Face Spaces link for the YouTube Transcript Analyzer.
